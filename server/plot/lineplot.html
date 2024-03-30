@@ -1,0 +1,33 @@
+<canvas id="lineChart" width="0" height="0"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Sample data for the line plot
+    const data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Sample Line Plot',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            borderColor: 'blue',
+            fill: false
+        }]
+    };
+
+    // Configuration options
+    const options = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+    // Get the canvas element
+    const canvas = document.getElementById('lineChart').getContext('2d');
+
+    // Create the line chart
+    const lineChart = new Chart(canvas, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+</script>

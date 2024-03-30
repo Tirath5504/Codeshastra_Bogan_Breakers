@@ -1,0 +1,57 @@
+<canvas id="myChart" width="0" height="0"></canvas>
+<canvas id="myChart2" width="0" height="0"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const barPlot = (ctx, data, labels) => {
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    labels,
+                    data,
+                    backgroundColor: [
+                        'rgba(0, 203, 2, 0.64)',
+                        'rgba(255, 0, 2, 0.64)',
+                    ],
+                    borderColor: [
+                        'rgba(0, 203, 2, 0.8)',
+                        'rgba(255, 0, 2, 0.8)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+        });
+    }
+    const linePlot = (ctx, data, labels) => {
+        console.log(data);
+        const options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+        const lineChart = new Chart(ctx, {
+            type: 'line',
+            data,
+            options
+        });
+    }
+    const myFunc = async () => {
+        const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNzExNzg0MTAzfQ.dpc3wMY3kMJjKmGCMv5WNt60Tmq0vK7XRDO8LzjyVvs"
+        let data = await fetch("http://127.0.0.1:5000/record/getReport", {
+            method: 'GET',
+            headers: {
+                authToken,
+                'Content-Type': 'application/json'
+            }
+        });
+        data = await data.json();
+        data = data.data;
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        barPlot(ctx, data.correctPosture, 'Straight Posture');
+        linePlot(ctx2, { labels: data.time, datasets: [{ data: data.shakeTime }] }, 'shakeTime')
+    }
+    myFunc();
+</script>

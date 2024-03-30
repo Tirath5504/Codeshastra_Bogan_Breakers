@@ -1,7 +1,13 @@
 import React from "react"
 import './Login.css'
 import logooptima from './Optimaoptima black .png'
+import { useNavigate } from "react-router-dom"
 export default function SignUp () {
+  const navigate = useNavigate();
+ 
+    const Guidepage = () => {
+        navigate("/guide");
+    }
   return (
     <div className="LoginBack">
  
@@ -60,7 +66,7 @@ export default function SignUp () {
           
           <div className="d-grid gap-2 mt-3">
           <center>
-            <button backgroundColor='Green'>
+            <button backgroundColor='Green' onClick={Guidepage}>
               Submit
             </button>
             </center>

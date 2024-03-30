@@ -8,22 +8,12 @@ import UserReport from './components/UserReport';
 // import Guide from './components/Guide';
 function App() {
   return (
-    <>
-      {/* <Demo /> */}
-      {/* <SignUp /> */}
-      <BrowserRouter>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+      </Routes>
 
-          <Route index element={<Home />} />
-          <Route path="login" element={<Demo />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path='report' element={<UserReport />} />
-        </Routes>
-      </BrowserRouter>
-      {/* <Home/> */}
-      {/* <Guide /> */}
-
-    </>
+    </BrowserRouter>
   );
 }
 

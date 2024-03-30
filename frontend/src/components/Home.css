@@ -8,6 +8,11 @@
     font-weight: normal;
     src: local('NATS Regular'), url('NATS-Regular.woff') format('woff');
     }
+    .homebg{
+        height: 100vh;
+        width: 100vw;
+        background-color: #DAFFD0;
+    }
     html{
         min-height: 100%;
         overflow: hidden;
@@ -41,7 +46,7 @@
         font-weight: bold;
       }
       .bounce{
-        margin-bottom: 50px;
+        margin-bottom: 0px;
         margin-top: -50px;
         width: 400px;
         height: 75px;
@@ -90,7 +95,7 @@
 } */
       body{
         height: calc(100vh - 8em);
-        padding: 4em;
+        /* padding: 4em; */
         color: #21A700;
         background-color: #DAFFD0;  
       }
@@ -103,7 +108,7 @@
           /* margin: 0 auto; */
           border-right: 2px solid #21A700;
           font-size: 500%;
-          text-align: center;
+          /* text-align: center; */
           white-space: nowrap;
           overflow: hidden;
           transform: translateY(-50%);    

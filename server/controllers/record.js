@@ -51,7 +51,10 @@ const getReport = async (req, res) => {
                         else
                             data[key].incorrect++;
                     } else {
-                        data[key].push(record[key]);
+                        if (key === 'time')
+                            data[key].push((new Date(record[key])).toGMTString().slice(5, 12));
+                        else
+                            data[key].push(record[key]);
                     }
                 }
             }

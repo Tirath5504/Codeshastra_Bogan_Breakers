@@ -1,12 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { CloudinaryContext, Video } from 'cloudinary-react';
+import Loader from "./Loader";
+import "./VideoInput.css";
 
-const UploadVideo = () => {
+const VideoInput = () => {
     const ipt = useRef();
-    const [videoUrl, setVideoUrl] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [videoUrl, setVideoUrl] = useState('https://res.cloudinary.com/dapwssjtf/video/upload/v1711824498/videos/headPositionDetection_ltpslu.mp4');
+    // const [videoUrl, setVideoUrl] = useState(null);
     const CLOUD_NAME = 'dapwssjtf';
     const handleVideoUpload = async () => {
         const file = ipt.current.files[0];
+        if (!file) {
+            alert('please upload a file!!');
+            return;
+        }
+        setIsLoading(true);
+        setVideoUrl(null);
         console.log(file);
         // Upload video to Cloudinary
         const formData = new FormData();
@@ -24,17 +34,22 @@ const UploadVideo = () => {
     };
 
     return (
-        <div className='video-input-cont'>
-            <input ref={ipt} type="file" accept="video/*" />
-            <button onClick={handleVideoUpload}>Upload</button>
-            {videoUrl && (
-                <CloudinaryContext cloudName={CLOUD_NAME}>
-                    <Video publicId={videoUrl} controls />
-                </CloudinaryContext>
-            )
-            }
-        </div >
+        <div className="video-input-main">
+            <div className='video-input-cont'>
+                <input ref={ipt} type="file" accept="video/*" />
+                <button onClick={handleVideoUpload}>Upload</button>
+                <Loader toLoad={isLoading && !videoUrl} />
+                <div className='uploaded-video'>
+                    {videoUrl && (
+                        <CloudinaryContext cloudName={CLOUD_NAME}>
+                            <Video className='my-video' publicId={videoUrl} controls />
+                        </CloudinaryContext>
+                    )
+                    }
+                </div>
+            </div >
+        </div>
     );
 };
 
-export default UploadVideo;
+export default VideoInput;

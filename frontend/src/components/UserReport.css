@@ -1,0 +1,11 @@
+.graphs{
+    display: flex;
+    height: 300px;
+    width: 80vw;
+    margin: 60px auto;
+    flex-wrap: wrap;
+}
+
+.graph{
+    margin:10px 7px;
+}

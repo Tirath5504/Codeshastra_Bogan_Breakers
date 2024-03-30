@@ -15,7 +15,7 @@
     }
     html{
         min-height: 100%;
-        overflow: hidden;
+        overflow: auto;
       }
       .Loginbttn{
         width: 200px;

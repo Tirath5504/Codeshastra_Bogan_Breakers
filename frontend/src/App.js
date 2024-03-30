@@ -11,16 +11,16 @@ function App() {
     <>
      {/* <Demo/>  */}
     {/* <SignUp/> */}
-    {/* <BrowserRouter>
+    <BrowserRouter>
       <Routes>
 
           <Route index element={<Home />} />
           <Route path="login" element={<Demo />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="guide" element={<Guide />} />
       </Routes>
-    </BrowserRouter> */}
+    </BrowserRouter>
     {/* <Home/> */}
-    <Guide/>
 
     </>
   );

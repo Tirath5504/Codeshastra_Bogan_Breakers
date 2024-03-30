@@ -1,0 +1,39 @@
+h1{
+    color: black;
+    font-size: x-large;
+}
+h2{
+    font-size: x-large;
+}
+
+.Guideback{
+    font-family: 'Inter';
+    background-color:#DAFFD0 ;
+    width: 100vw;
+    height:auto;
+    overflow-y: auto;
+}
+.Guidebox
+{
+  width: 1000px;
+  height:auto;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background-color: #FFFDED;
+  overflow-y: auto;
+}
+p{
+    font-size: large;
+}
+button{
+    background-color: #DAFFD0;
+    border-radius: 100px;
+    border-color: #DAFFD0;
+    height: 50px;
+    width: 150px;
+    margin: 20px;
+    font-family: 'Inter','Sans-Serif';
+    font-size: larger;
+  }

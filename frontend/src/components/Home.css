@@ -1,0 +1,147 @@
+
+/* body{
+    background-color: #FFFDED;
+} */
+@font-face {
+    font-family: 'NATS Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('NATS Regular'), url('NATS-Regular.woff') format('woff');
+    }
+    .homebg{
+        height: 100vh;
+        width: 100vw;
+        background-color: #DAFFD0;
+    }
+    html{
+        min-height: 100%;
+        overflow: auto;
+      }
+      .Loginbttn{
+        width: 200px;
+        height: 50px;
+        border-radius: 100px;
+        background-color: #DAFFD0;
+        border-color: black;
+        border-width: 5px;
+        color: black;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-left: 20px;
+        font-family: 'Inter';
+        font-size: large;
+        font-weight: bold;
+      }
+      .Signupbttn{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        width: 200px;
+        height: 50px;
+        border-radius: 100px;
+        border-color: #DAFFD0;
+        background-color: black;
+        color: #DAFFD0;
+        font-family: 'Inter';
+        font-size: large;
+        font-weight: bold;
+      }
+      .bounce{
+        margin-bottom: 0px;
+        margin-top: -50px;
+        width: 400px;
+        height: 75px;
+        border-radius: 100px;
+        border-color: #DAFFD0;
+        background-color: black;
+        color: #DAFFD0;
+        font-family: 'Inter';
+        font-size: large;
+        font-weight: bold;
+      }
+      
+      
+      /* @keyframes bounce {
+        0% {
+    transform: scale(1,1) translate(0px, 0px);
+  }
+  
+  30%{
+    transform: scale(1,0.8) translate(0px, 10px); 
+  }
+
+  75%{
+    transform: scale(1,1.1) translate(0px, -25px); 
+  }
+  
+ 100% {
+    transform: scale(1,1) translate(0px, 0px);
+  }
+}
+
+.bounce {
+      text-align:center;
+      margin-bottom: 50px;
+      width: 400px;
+      height: 75px;
+      border-radius: 100px;
+      border-color: #DAFFD0;
+      background-color: black;
+      color: #DAFFD0;
+      font-family: 'Inter';
+      font-size: large;
+      font-weight: bold;  
+     -webkit-animation: bounce 1s infinite;
+     animation:bounce 1s infinite ;
+} */
+      body{
+        height: calc(100vh - 8em);
+        /* padding: 4em; */
+        color: #21A700;
+        background-color: #DAFFD0;  
+      }
+      .line-1{
+        margin-top:150px;
+          position: relative;
+          font-family:'NATS Regular';
+          top: 50%;  
+          width: 24em;
+          /* margin: 0 auto; */
+          border-right: 2px solid #21A700;
+          font-size: 500%;
+          /* text-align: center; */
+          white-space: nowrap;
+          overflow: hidden;
+          transform: translateY(-50%);    
+      }
+      
+      /* Animation */
+      .anim-typewriter{
+        animation: typewriter 4s steps(44) 1s 1 normal both,
+                   blinkTextCursor 500ms steps(44) infinite normal;
+      }
+      @keyframes typewriter{
+        from{width: 0;}
+        to{width: 24em;}
+      }
+      @keyframes blinkTextCursor{
+        from{border-right-color: #21A700;}
+        to{border-right-color: transparent;}
+      }
+/* .Divvv{
+    width: 100%;
+    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+} */
+/* .Backimg{
+    width: auto;
+    height:auto;
+} */
+/* .Logogreen{
+    height: 100%;
+    width:auto;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+} */

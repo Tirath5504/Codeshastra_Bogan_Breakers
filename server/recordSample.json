@@ -1,0 +1,11 @@
+{
+  "correctPosture": true,
+  "shakeTime": 10,
+  "shakeOrientation": true,
+  "shakeCount": 45,
+  "distance": 12,
+  "clickActivation": true,
+  "inhaleAngle": 82,
+  "inhaleTime": 8,
+  "holdTime": 12
+}

@@ -27,6 +27,11 @@ def checkHandShaking(prev_wrist_x, prev_wrist_y, wrist_x, wrist_y):
 def sendWarning():
     print("Hand shaking detected!")
 
+# Define alert function (replace with your desired notification method)
+def sound_alert():
+  # Play a sound or send a notification
+  print("Fall detected! Please check on the person.")
+
 # Initialize frame counters
 good_frames = 0
 bad_frames = 0
@@ -53,6 +58,8 @@ pose = mp_pose.Pose()
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 
+mp_drawing = mp.solutions.drawing_utils
+
 # Initialize webcam
 cap = cv2.VideoCapture(0)
 
@@ -61,6 +68,9 @@ cap = cv2.VideoCapture(0)
 prev_wrist_x = 0
 prev_wrist_y = 0
 no_hand_detection_start_time = None
+
+# Threshold for fall detection (adjust based on your setup)
+fall_threshold = 0.2 
 
 while cap.isOpened():
     # Capture frames
@@ -183,16 +193,16 @@ while cap.isOpened():
         # Assist to align the camera to point at the side view of the person.
         # Offset threshold 30 is based on results obtained from analysis over 100 samples.
         if neck_inclination < 20 and torso_inclination < 10:
-            cv2.putText(image, str(int(offset)) + ' Aligned', (w - 150, 30), font, 0.9, green, 2)
+            cv2.putText(image, ' Aligned', (w - 200, 30), font, 0.9, green, 2)
         else:
-            cv2.putText(image, str(int(offset)) + ' Not Aligned', (w - 150, 30), font, 0.9, red, 2)
+            cv2.putText(image, ' Not Aligned', (w - 200, 30), font, 0.9, red, 2)
 
         # Determine whether good posture or bad posture.
         # The threshold angles have been set based on intuition.
         if neck_inclination < 20 and torso_inclination < 10:
             bad_frames = 0
             good_frames += 1
-            
+
             # cv2.putText(image, angle_text_string, (10, 30), font, 0.9, light_green, 2)
             cv2.putText(image, str(int(neck_inclination)), (l_shldr_x + 10, l_shldr_y), font, 0.9, light_green, 2)
             cv2.putText(image, str(int(torso_inclination)), (l_hip_x + 10, l_hip_y), font, 0.9, light_green, 2)
@@ -216,6 +226,20 @@ while cap.isOpened():
             cv2.line(image, (l_shldr_x, l_shldr_y), (l_shldr_x, l_shldr_y - 100), red, 4)
             cv2.line(image, (l_hip_x, l_hip_y), (l_shldr_x, l_shldr_y), red, 4)
             cv2.line(image, (l_hip_x, l_hip_y), (l_hip_x, l_hip_y - 100), red, 4)
+
+        # # if answers.pose_landmarks:
+        # #     mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+
+        # # Extract y coordinate of the nose tip
+        # if results.pose_landmarks:
+        #     curr_nose_y = results.pose_landmarks.landmark[mp_pose.PoseLandmark.NOSE].y
+
+        # # Check for significant change in Y-coordinate
+        # if abs(curr_nose_y - prev_nose_y) > fall_threshold:
+        #     sound_alert()
+
+        # # Update previous nose Y-coordinate
+        # prev_nose_y = curr_nose_y
 
         # Display the frame
         cv2.imshow('MediaPipe Hands', image)

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 // import Logo from "../Assets/Logo.svg";
 import { Box, Drawer, Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { HiOutlineBars3 } from "react-icons/hi2";
+import { useNavigate } from 'react-router-dom'
 import "./css/Navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
@@ -19,6 +21,9 @@ const Navbar = () => {
       text: "See Guide",
       path: '/guide',
     },
+    {
+      text: 'Log Out'
+    }
   ];
   return (
     <nav>
@@ -38,7 +43,12 @@ const Navbar = () => {
           <List>
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton to={item.path}>
+                <ListItemButton onClick={() => {
+                  if (item.text === 'Log Out') {
+                    localStorage.removeItem('authToken');
+                    navigate('/login');
+                  }
+                }} to={item.path}>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </ListItem>

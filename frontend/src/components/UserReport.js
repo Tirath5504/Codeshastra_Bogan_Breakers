@@ -37,10 +37,10 @@ const UserReport = () => {
             myPlot(ctx2, Object.keys(data.correctPosture), Object.values(data.correctPosture), 'Posture', 'bar');
 
             const ctx3 = document.getElementById('ctx3');
-            myPlot(ctx3, data.time.slice(5,20), data.distance.slice(5,20), 'Distance', 'line');
+            myPlot(ctx3, data.time.slice(5,20), data.distance.slice(5,20), 'Distance Of Pen And User', 'line');
 
             const ctx4 = document.getElementById('ctx4');
-            myPlot(ctx4, data.time.slice(5,20), data.holdTime.slice(5,20), 'Hold Time(in sec)', 'line');
+            myPlot(ctx4, data.time.slice(5,20), data.holdTime.slice(5,20), 'Hold Time Of Breadth(in sec)', 'line');
 
         } catch (err) {
             console.log(err);

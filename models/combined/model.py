@@ -96,10 +96,10 @@ while cap.isOpened():
             no_hand_detection_start_time = None
 
         # Check for continuous no hand detection for 3 seconds
-        if no_hand_detection_start_time is not None and time.time() - no_hand_detection_start_time >= 3:
-            print("Hand not detected for 3 seconds. Closing window...")
-            cv2.waitKey(1000)  # Wait for 1 second before closing
-            break
+        # if no_hand_detection_start_time is not None and time.time() - no_hand_detection_start_time >= 3:
+        #     print("Hand not detected for 3 seconds. Closing window...")
+        #     cv2.waitKey(1000)  # Wait for 1 second before closing
+        #     break
 
         # Check for detected hand and landmarks
         if results.multi_hand_landmarks:

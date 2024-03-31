@@ -1,0 +1,6 @@
+.navbar-menu-container svg{
+    cursor: pointer;
+    margin: 5px 20px;
+    font-size: 40px ;
+    position: fixed;
+}

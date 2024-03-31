@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { CloudinaryContext, Video } from 'cloudinary-react';
 import Loader from "./Loader";
-import "./VideoInput.css";
+import "./css/VideoInput.css";
 
 const VideoInput = () => {
     const ipt = useRef();
     const [isLoading, setIsLoading] = useState(false);
-    const [videoUrl, setVideoUrl] = useState('https://res.cloudinary.com/dapwssjtf/video/upload/v1711824498/videos/headPositionDetection_ltpslu.mp4');
-    // const [videoUrl, setVideoUrl] = useState(null);
+    // const [videoUrl, setVideoUrl] = useState('https://res.cloudinary.com/dapwssjtf/video/upload/v1711824498/videos/headPositionDetection_ltpslu.mp4');
+    const [videoUrl, setVideoUrl] = useState(null);
     const CLOUD_NAME = 'dapwssjtf';
     const handleVideoUpload = async () => {
         const file = ipt.current.files[0];
@@ -32,7 +32,6 @@ const VideoInput = () => {
         console.log(data);
         setVideoUrl(data.secure_url);
     };
-
     return (
         <div className="video-input-main">
             <div className='video-input-cont'>
@@ -48,6 +47,10 @@ const VideoInput = () => {
                     }
                 </div>
             </div >
+            <h1 className='text-center'>OR</h1>
+            <div className="video-input-iframe-div">
+                <iframe className='video-input-iframe' title='video-input-iframe' src="http://127.0.0.1:5001"></iframe>
+            </div>
         </div>
     );
 };

@@ -6,7 +6,7 @@
     font-family: 'NATS Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('NATS Regular'), url('NATS-Regular.woff') format('woff');
+    src: local('NATS Regular'), url('../assests/NATS-Regular.woff') format('woff');
     }
     .homebg{
         height: 100vh;
@@ -116,7 +116,7 @@
       
       /* Animation */
       .anim-typewriter{
-        animation: typewriter 4s steps(44) 1s 1 normal both,
+        animation: typewriter 6s steps(44) 1s infinite normal both,
                    blinkTextCursor 500ms steps(44) infinite normal;
       }
       @keyframes typewriter{

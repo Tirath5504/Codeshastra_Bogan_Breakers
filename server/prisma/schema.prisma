@@ -20,6 +20,15 @@ model User {
   emergencyContact String
   dob DateTime
   records Record[]
+  videos Video[]
+}
+
+model Video{
+  email String 
+  time DateTime
+  video_url String 
+  @@id([email,time])
+  user User @relation(fields:[email],references:[email])
 }
 
 model Record{

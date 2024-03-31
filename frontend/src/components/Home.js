@@ -1,6 +1,6 @@
 // import Navbar from "./Navbar";
-import './Home.css'
-import logoblack from './Optimaoptima black .png'
+import './css/Home.css'
+import logoblack from './assests/Optimaoptima black .png'
 import {Circle} from 'react-awesome-shapes'
 import {Donut} from 'react-awesome-shapes'
 import { useNavigate } from "react-router-dom"
@@ -20,7 +20,7 @@ function Home()
     <img src={Backimg} alt="landing img" className="Backimg"/>
     <img src={logoblack} className="Logogreen"/>
     </div> */}
-    <div class="Homebg">
+    <div className="Homebg">
     <Circle
     color="linear-gradient(135deg, #DAFFD0, #21A700)"
     size={['250px', '250px', '250px', '250px']}
@@ -34,13 +34,13 @@ function Home()
     <div><center><img src={logoblack} alt="logo black" style={{marginTop:"100px"}}/> </center></div>
     <div>
     <center>
-    <button class='Signupbttn' onClick={SignPage}>Sign Up</button>
-    <button class='Loginbttn' onClick={LoginPage}>Login</button>
+    <button className='Signupbttn' onClick={SignPage}>Sign Up</button>
+    <button className='Loginbttn' onClick={LoginPage}>Login</button>
     </center>
     </div>
     <br/>
-   <center><div><h3 class="line-1 anim-typewriter">Optima: Real-Time Action Detection for Healthier Lives</h3></div> </center>
-   <div><center><button class="bounce" onClick={SignPage}>Get started with guided tour</button></center></div>
+   <center><div><h3 className="line-1 anim-typewriter">Optima: Real-Time Action Detection for Healthier Lives</h3></div> </center>
+   <div><center><button className="bounce" onClick={SignPage}>Get started with guided tour</button></center></div>
    <div style={{marginLeft:"200px"}}><Donut
     color="#21A700"
     size="180px"

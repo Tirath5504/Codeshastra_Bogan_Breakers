@@ -23,7 +23,7 @@ const signup = async (req, res) => {
             return res.status(400).json([{ msg: "User Already Exist With The Given Email,Please Login" }])
         }
         const salt = await bcryptjs.genSalt(10);
-        const encrpytPass = await bcryptjs.hash(req.body.password, salt);
+        const encrpytPass = await bcryptjs.hash(password, salt);
 
         user = await prisma.user.create({
             data: {
@@ -37,8 +37,8 @@ const signup = async (req, res) => {
         const data = {
             email
         }
-        const userToken = jwt.sign(data, JWT_SECRET);
-        res.json({ success: true, msg: 'Sign Up Successfully!!!', userToken });//returning the user token to the user
+        const authToken = jwt.sign(data, JWT_SECRET);
+        res.json({ success: true, msg: 'Sign Up Successfully!!!', authToken });//returning the user token to the user
     } catch (err) {
         console.error(err.message);
         res.status(500).send({ success: false, msg: "Internal Server Error", err: err.msg });
@@ -57,17 +57,17 @@ const login = async (req, res) => {
             }
         });
         if (!user) {
-            return res.status(400).json([{ msg: "User Not Exist,Please Signup" }]);
+            return res.status(400).json({ success: false, msg: "User Not Exist,Please Signup" });
         } else {
-            const comparePass = await bcryptjs.compare(req.body.password, user.password);
+            const comparePass = await bcryptjs.compare(password, user.password);
             if (!comparePass) {
-                return res.status(400).json([{ msg: "Please Enter a Correct Email/Password" }]);
+                return res.status(400).json({ success: false, msg: "Please Enter a Correct Email/Password" });
             } else {
                 const data = {
                     id: user.id
                 }
-                const userToken = jwt.sign(data, JWT_SECRET);
-                return res.json({ success: true, msg: "Login Successfully!!!", userToken });
+                const authToken = jwt.sign(data, JWT_SECRET);
+                return res.json({ success: true, msg: "Login Successfully!!!", authToken });
             }
         }
     } catch (err) {

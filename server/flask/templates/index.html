@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mainBox {
+            display: flex;
+            margin: 30px 0px;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #mybtn {
+            background-color: #DAFFD0;
+            border-radius: 100px;
+            border-color: #DAFFD0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            height: 45px;
+            width: 200px;
+            font-family: 'Inter', 'Sans-Serif';
+        }
+
+        .mainBox>div>img {
+            width: 1000px;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainBox">
+        <button id="mybtn">Start Recording</button>
+        <!-- <div> -->
+        <img class="hide" id="myimg" alt="">
+        <!-- </div> -->
+    </div>
+    <script>
+        const myimg = document.getElementById('myimg')
+        const mybtn = document.getElementById('mybtn')
+        mybtn.addEventListener('click', (e) => {
+            if (mybtn.textContent === 'Start Recording') {
+                mybtn.textContent = 'Stop Recording';
+                myimg.src = "{{url_for('feed_video')}}"
+                myimg.classList.toggle('hide');
+            } else {
+                mybtn.textContent = 'Start Recording';
+                myimg.src = ""
+                myimg.classList.toggle('hide');
+            }
+        })
+    </script>
+</body>
+
+</html>

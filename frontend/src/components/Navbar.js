@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import Logo from "../Assets/Logo.svg";
+// import Logo from "../Assets/Logo.svg";
+import { Box, Drawer, Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { HiOutlineBars3 } from "react-icons/hi2";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-
+import "./css/Navbar.css";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
-      text: "Login"
+      text: "Home",
+      path: '/video',
     },
     {
-      text: "Sign Up"
+      text: "Report",
+      path: '/report',
+    },
+    {
+      text: "See Guide",
+      path: '/guide',
     },
   ];
   return (
     <nav>
       <div className="nav-logo-container">
-        <img src={Logo} alt="" />
+        {/* <img src={Logo} alt="" /> */}
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
@@ -38,7 +38,7 @@ const Navbar = () => {
           <List>
             {menuOptions.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                <ListItemButton to={item.path}>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </ListItem>

@@ -1,9 +1,15 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import Chart from 'chart.js/auto'
-import "./UserReport.css";
+import "./css/UserReport.css";
 const UserReport = () => {
     const [data, setData] = useState(null);
     const myPlot = (ctx, labels, data, label, type) => {
+        const backgroundColor = ['rgba(0, 203, 2, 0.64)'];
+        const borderColor = ['rgba(0, 203, 2, 0.8)'];
+        if (type === 'bar') {
+            backgroundColor.push('rgba(255, 0, 2, 0.64)');
+            borderColor.push('rgba(255, 0, 2, 0.8)');
+        }
         new Chart(ctx, {
             type,
             data: {
@@ -11,31 +17,12 @@ const UserReport = () => {
                 datasets: [{
                     label,
                     data,
-                    backgroundColor: [
-                        'rgba(0, 203, 2, 0.64)',
-                        'rgba(255, 0, 2, 0.64)',
-                    ],
-                    borderColor: [
-                        'rgba(0, 203, 2, 0.8)',
-                        'rgba(255, 0, 2, 0.8)',
-                    ],
-                    borderWidth: 1
+                    backgroundColor,
+                    borderColor,
+                    borderWidth: 1,
+                    pointRadius:5,
                 }]
             },
-        });
-    }
-    const linePlot = (ctx, data, labels) => {
-        // const options = {
-        //     scales: {
-        //         y: {
-        //             beginAtZero: true
-        //         }
-        //     }
-        // };
-        new Chart(ctx, {
-            type: 'line',
-            data,
-            // options
         });
     }
     const drawGraph = useCallback(() => {
@@ -50,16 +37,16 @@ const UserReport = () => {
             myPlot(ctx2, Object.keys(data.correctPosture), Object.values(data.correctPosture), 'Posture', 'bar');
 
             const ctx3 = document.getElementById('ctx3');
-            myPlot(ctx3, data.time, data.distance, 'Distance', 'line');
+            myPlot(ctx3, data.time.slice(5,20), data.distance.slice(5,20), 'Distance', 'line');
 
             const ctx4 = document.getElementById('ctx4');
-            myPlot(ctx4, data.time, data.holdTime, 'Hold Time(in sec)', 'line');
+            myPlot(ctx4, data.time.slice(5,20), data.holdTime.slice(5,20), 'Hold Time(in sec)', 'line');
 
         } catch (err) {
             console.log(err);
         }
     }, [data]);
-    const getData = async () => {
+    const getData = useCallback(async () => {
         if (!data) {
             let res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/record/getReport`, {
                 method: 'GET',
@@ -72,20 +59,23 @@ const UserReport = () => {
             drawGraph(res.data);
             setData(res.data);
         }
-    }
+    }, [data, drawGraph]);
     useEffect(() => {
         getData();
-    }, []);
+    }, [getData]);
     useEffect(() => {
         drawGraph();
     }, [drawGraph]);
     return (
-        <div className='graphs'>
-            <canvas className='graph graph0' id='ctx1'></canvas>
-            <canvas className='graph graph0' id='ctx2'></canvas>
-            <canvas className='graph graph1' id='ctx3'></canvas>
-            <canvas className='graph graph1' id='ctx4'></canvas>
-        </div>
+        <>
+            <h1 className='text-center' style={{fontFamily:"Inter"}}>Reports</h1>
+            <div className='graphs'>
+                <canvas className='graph graph0' id='ctx1'></canvas>
+                <canvas className='graph graph0' id='ctx2'></canvas>
+                <canvas className='graph graph1' id='ctx3'></canvas>
+                <canvas className='graph graph1' id='ctx4'></canvas>
+            </div>
+        </>
     )
 }
 

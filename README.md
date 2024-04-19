@@ -12,9 +12,9 @@ Optima is tailored to meet the unique needs of healthcare providers and patients
 
 - Analyze Usage Patterns: By analyzing posture and action data, Optima helps healthcare professionals identify trends and patterns in asthma pump usage, facilitating personalized treatment plans and interventions.
 
-- Ensure Correct Device Usage: Optima includes features such as pen tick verification and thumb vs. finger differentiation to ensure that patients are using the asthma pump correctly, minimizing the risk of errors and maximizing treatment efficacy.
+- Ensure Correct Device Usage: Optima includes features such as shake counting and detection and pump-to-face distance measurement to ensure that patients are using the asthma pump correctly, minimizing the risk of errors and maximizing treatment efficacy.
 
-- Enhance Patient Engagement: Optima's user-friendly interface and guided tour feature promote patient engagement and empowerment, helping patients better understand and manage their asthma treatment.
+- Enhance Patient Engagement: Optima's user-friendly interface promotes patient engagement and empowerment, helping patients better understand and manage their asthma treatment.
 
 ## Benefits
 
